@@ -53,12 +53,12 @@ export default function Hero() {
             </motion.button>
             <span className="text-gray-400">·</span>
             <motion.button
-              onClick={() => scrollToSection('projects')}
+              onClick={() => scrollToSection('experience')}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="hover:text-blue-400 transition-colors duration-300 relative group"
             >
-              PROJECTS
+              EXPERIENCE
               <motion.div
                 className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
                 initial={{ scaleX: 0 }}
@@ -67,12 +67,12 @@ export default function Hero() {
             </motion.button>
             <span className="text-gray-400">·</span>
             <motion.button
-              onClick={() => scrollToSection('experience')}
+              onClick={() => scrollToSection('projects')}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="hover:text-blue-400 transition-colors duration-300 relative group"
             >
-              EXPERIENCE
+              PROJECTS
               <motion.div
                 className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
                 initial={{ scaleX: 0 }}
