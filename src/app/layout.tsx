@@ -33,15 +33,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "relative")}>
-        {/* coloured beams */}
-        <BeamsBackground className="fixed inset-0 -z-30" intensity="strong" />
-
-        {/* white-wave SVG background */}
-        <BackgroundPaths className="fixed inset-0 -z-20 pointer-events-none" />
-
-        {/* regular site content */}
-        {children}
+      <body className={cn(inter.className, "relative overflow-x-hidden")}>
+        {/* Content layer - separate from backgrounds */}
+        <div className="relative z-10 w-full min-h-screen">
+          {children}
+        </div>
+        
+        {/* Background layer - completely isolated */}
+        <div className="fixed inset-0 -z-50 pointer-events-none">
+          <BeamsBackground className="absolute inset-0" intensity="strong" />
+          <BackgroundPaths className="absolute inset-0" />
+        </div>
       </body>
     </html>
   )

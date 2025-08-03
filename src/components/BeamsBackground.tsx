@@ -67,6 +67,9 @@ export function BeamsBackground({
             canvas.height = window.innerHeight * dpr;
             canvas.style.width = `${window.innerWidth}px`;
             canvas.style.height = `${window.innerHeight}px`;
+            
+            // Reset transform before applying new scale
+            ctx.setTransform(1, 0, 0, 1, 0, 0); // identity matrix
             ctx.scale(dpr, dpr);
 
             const totalBeams = MINIMUM_BEAMS * 1.5;
@@ -158,22 +161,8 @@ export function BeamsBackground({
 
         animate();
 
-        // Add scroll listener to update canvas transform
-        const handleScroll = () => {
-            if (canvas && typeof window !== 'undefined') {
-                window.addEventListener("scroll", handleScroll);
-            }
-        };
-
-        if (typeof window !== 'undefined') {
-            window.addEventListener("scroll", handleScroll);
-        }
-
         return () => {
             window.removeEventListener("resize", updateCanvasSize);
-            if (typeof window !== 'undefined') {
-                window.removeEventListener("scroll", handleScroll);
-            }
             if (animationFrameRef.current) {
                 cancelAnimationFrame(animationFrameRef.current);
             }
@@ -183,15 +172,16 @@ export function BeamsBackground({
     return (
         <div
             className={cn(
-                "relative min-h-screen w-full overflow-hidden",
+                "absolute inset-0 pointer-events-none",
                 className
             )}
         >
             <canvas
                 ref={canvasRef}
-                className="fixed inset-0 pointer-events-none"
+                className="absolute inset-0 pointer-events-none"
                 style={{ 
-                    filter: "blur(15px)"
+                    filter: "blur(15px)",
+                    
                 }}
             />
 
@@ -209,8 +199,6 @@ export function BeamsBackground({
                     backdropFilter: "blur(50px)",
                 }}
             />
-
-
         </div>
     );
 } 
