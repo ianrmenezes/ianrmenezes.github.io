@@ -62,21 +62,25 @@ export function BeamsBackground({
         if (!ctx) return;
 
         const updateCanvasSize = () => {
-            const dpr = window.devicePixelRatio || 1;
-            canvas.width = window.innerWidth * dpr;
+            /* 1. decide the pixel ratio FIRST */
+            const MAX_DPR = 1.5;                               // cap hi-DPI
+            const dpr = Math.min(window.devicePixelRatio ?? 1, MAX_DPR);
+          
+            /* 2. now you can use dpr safely */
+            canvas.width  = window.innerWidth  * dpr;
             canvas.height = window.innerHeight * dpr;
-            canvas.style.width = `${window.innerWidth}px`;
+            canvas.style.width  = `${window.innerWidth}px`;
             canvas.style.height = `${window.innerHeight}px`;
-            
-            // Reset transform before applying new scale
-            ctx.setTransform(1, 0, 0, 1, 0, 0); // identity matrix
+          
+            // reset & rescale the context
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
             ctx.scale(dpr, dpr);
-
+          
             const totalBeams = MINIMUM_BEAMS * 1.5;
             beamsRef.current = Array.from({ length: totalBeams }, () =>
-                createBeam(canvas.width, canvas.height)
+              createBeam(canvas.width, canvas.height)
             );
-        };
+          };
 
         updateCanvasSize();
         window.addEventListener("resize", updateCanvasSize);
@@ -141,7 +145,7 @@ export function BeamsBackground({
             if (!canvas || !ctx) return;
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.filter = "blur(35px)";
+            //ctx.filter = "blur(35px)";
 
             const totalBeams = beamsRef.current.length;
             beamsRef.current.forEach((beam, index) => {
@@ -177,13 +181,9 @@ export function BeamsBackground({
             )}
         >
             <canvas
-                ref={canvasRef}
-                className="absolute inset-0 pointer-events-none"
-                style={{ 
-                    filter: "blur(15px)",
-                    
-                }}
-            />
+  ref={canvasRef}
+  className="absolute inset-0 pointer-events-none blur-[35px]"
+/>
 
             <motion.div
                 className="absolute inset-0 bg-neutral-950/5"
