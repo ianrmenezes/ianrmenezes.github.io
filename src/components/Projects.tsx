@@ -69,9 +69,7 @@ export default function Projects() {
                 <motion.button
                   key={filter.value}
                   onClick={() => setActiveFilter(filter.value)}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                  className={`px-4 py-2 rounded-full font-medium hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] transform transition-transform duration-100 text-sm ${
                     activeFilter === filter.value
                       ? 'bg-blue-600 text-white'
                       : 'bg-black/30 text-black dark:text-white hover:bg-black/50 dark:hover:bg-white/20'
@@ -110,18 +108,9 @@ export default function Projects() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {filteredProjects.map((project, index) => (
-              <motion.div
+              <div
                 key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 + index * 0.1, ease: "easeOut" }}
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -8,
-                  transition: { duration: 0.3, ease: "easeOut" }
-                }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative bg-black/20 backdrop-blur-sm border border-black/20 rounded-xl overflow-hidden hover:bg-black/30 transition-all duration-300 cursor-pointer"
+                className="group relative bg-black/20 backdrop-blur-sm border border-black/20 rounded-xl overflow-hidden hover:bg-black/30 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98] cursor-pointer transform transition-transform duration-100"
               >
                        {/* Project Image */}
                        <div className="aspect-video relative overflow-hidden">
@@ -136,7 +125,7 @@ export default function Projects() {
                                 project.id === 'todoflow' ? 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=450&fit=crop&crop=center' :
                                 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=450&fit=crop&crop=center'}
                            alt={`${project.title} screenshot`}
-                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                           className="w-full h-full object-cover"
                          />
                          
                          {/* Dark Overlay for Better Text Readability */}
@@ -182,7 +171,7 @@ export default function Projects() {
                         href={project.links.repo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 py-2 bg-black/30 dark:bg-white/10 rounded-lg text-sm text-black dark:text-white hover:bg-black/50 dark:hover:bg-white/20 transition-colors"
+                        className="flex items-center gap-2 px-3 py-2 bg-black/30 dark:bg-white/10 rounded-lg text-sm text-black dark:text-white hover:bg-black/50 dark:hover:bg-white/20 hover:scale-[1.02] active:scale-[0.98] transform transition-all duration-100"
                       >
                         <Github className="w-4 h-4" />
                         Code
@@ -193,7 +182,7 @@ export default function Projects() {
                         href={project.links.live || project.links.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 py-2 bg-blue-600/20 dark:bg-blue-500/20 rounded-lg text-sm text-blue-700 dark:text-blue-400 hover:bg-blue-600/30 dark:hover:bg-blue-500/30 transition-colors"
+                        className="flex items-center gap-2 px-3 py-2 bg-blue-600/20 dark:bg-blue-500/20 rounded-lg text-sm text-blue-700 dark:text-blue-400 hover:bg-blue-600/30 dark:hover:bg-blue-500/30 hover:scale-[1.02] active:scale-[0.98] transform transition-all duration-100"
                       >
                         <ExternalLink className="w-4 h-4" />
                         {project.links.live ? 'Live' : 'Demo'}
@@ -201,7 +190,7 @@ export default function Projects() {
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
         </motion.div>

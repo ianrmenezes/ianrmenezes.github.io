@@ -4,16 +4,42 @@ import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { useMarqueeSpeed } from '@/hooks/useMarqueeSpeed';
 import { skills } from '@/data/skills';
+import JavaIcon from '@/components/JavaIcon';
+import { CCppIcon } from '@/data/skills';
+import { SiDart } from 'react-icons/si';
 
 export default function SkillsMarquee() {
   const { ref, isInView } = useInView({ triggerOnce: true });
   const { handleMouseEnter, handleMouseLeave } = useMarqueeSpeed();
 
+  // Debug: Log all skills to see what's available
+  console.log('All skills:', skills.map(s => ({ id: s.id, name: s.name, size: s.size })));
+  console.log('Looking for specific skills:', {
+    flutter: skills.find(s => s.id === 'flutter'),
+    docker: skills.find(s => s.id === 'docker'),
+    googlecloud: skills.find(s => s.id === 'googlecloud')
+  });
+
+  const renderIcon = (skill: any) => {
+    if (skill.id === 'java') {
+      return <JavaIcon size={skill.size ?? 24} />;
+    }
+  
+    if (skill.id === 'ccpp') {
+      return <CCppIcon size={skill.size ?? 24} />;
+    }
+  
+    return (
+      <skill.icon
+        size={skill.size ?? 24}
+        style={{ color: skill.color }}
+        fill="currentColor"
+      />
+    );
+  };
+
   return (
-    <section 
-      ref={ref}
-      className="py-20 px-4 overflow-hidden"
-    >
+    <section ref={ref} className="py-20 px-4 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -45,15 +71,15 @@ export default function SkillsMarquee() {
               {[...skills, ...skills].map((skill, index) => (
                 <motion.div
                   key={`${skill.id}-${index}`}
-                  whileHover={{ 
-                    scale: 1.1, 
+                  whileHover={{
+                    scale: 1.1,
                     y: -4,
-                    transition: { duration: 0.2, ease: "easeOut" }
+                    transition: { duration: 0.2, ease: "easeOut" },
                   }}
                   whileTap={{ scale: 0.95 }}
                   className="flex items-center gap-3 mx-8 px-6 py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full hover:bg-white/10 transition-all duration-300 cursor-pointer"
                 >
-                  <skill.icon className="w-5 h-5 text-blue-400" />
+                  {renderIcon(skill)}
                   <span className="text-white font-medium whitespace-nowrap">
                     {skill.name}
                   </span>
@@ -75,15 +101,15 @@ export default function SkillsMarquee() {
               {[...skills, ...skills].map((skill, index) => (
                 <motion.div
                   key={`${skill.id}-reverse-${index}`}
-                  whileHover={{ 
-                    scale: 1.1, 
+                  whileHover={{
+                    scale: 1.1,
                     y: -4,
-                    transition: { duration: 0.2, ease: "easeOut" }
+                    transition: { duration: 0.2, ease: "easeOut" },
                   }}
                   whileTap={{ scale: 0.95 }}
                   className="flex items-center gap-3 mx-8 px-6 py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full hover:bg-white/10 transition-all duration-300 cursor-pointer"
                 >
-                  <skill.icon className="w-5 h-5 text-green-400" />
+                  {renderIcon(skill)}
                   <span className="text-white font-medium whitespace-nowrap">
                     {skill.name}
                   </span>
@@ -92,9 +118,7 @@ export default function SkillsMarquee() {
             </div>
           </motion.div>
         </div>
-
-
       </motion.div>
     </section>
   );
-} 
+}

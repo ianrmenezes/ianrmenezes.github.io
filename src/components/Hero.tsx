@@ -10,7 +10,14 @@ export default function Hero() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const offset = 80; // Add some offset for better positioning
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -80,14 +87,14 @@ export default function Hero() {
               />
             </motion.button>
             <span className="text-gray-400">·</span>
-            <motion.a
-              href="https://drive.google.com/file/d/1plHv-u250r96OsQLn4T_twO-0ZzMAPLA/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="hover:text-blue-400 transition-colors duration-300 relative group cursor-pointer"
-            >
+                                  <motion.a
+                        href="https://drive.google.com/file/d/1Tgz65BS6yddCyyBJaJnlFdbKWhgYSfS7/view?usp=drive_link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="hover:text-blue-400 transition-colors duration-300 relative group cursor-pointer"
+                      >
               RESUME
               <motion.div
                 className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
@@ -105,13 +112,16 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
-          <motion.div
+          <motion.button
+            onClick={() => scrollToSection('about')}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="text-white/60"
+            className="text-white/60 hover:text-white cursor-pointer transition-colors duration-300"
           >
             <ChevronDown className="w-6 h-6" />
-          </motion.div>
+          </motion.button>
         </motion.div>
       </section>
     );

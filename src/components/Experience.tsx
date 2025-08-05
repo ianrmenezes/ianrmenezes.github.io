@@ -52,13 +52,7 @@ export default function Experience() {
                   {/* Content */}
                   <div className="ml-12 md:ml-16">
                     <motion.div 
-                      whileHover={{ 
-                        scale: 1.02, 
-                        y: -4,
-                        transition: { duration: 0.3, ease: "easeOut" }
-                      }}
-                      whileTap={{ scale: 0.98 }}
-                      className="bg-black/20 backdrop-blur-sm border border-black/20 rounded-xl p-6 hover:bg-black/30 transition-all duration-300 cursor-pointer"
+                      className="bg-black/20 backdrop-blur-sm border border-black/20 rounded-xl p-6 hover:bg-black/30 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98] cursor-pointer transform transition-transform duration-100"
                     >
                       {/* Header */}
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
