@@ -88,7 +88,7 @@ export default function Hero() {
             </motion.button>
             <span className="text-gray-400">·</span>
                                   <motion.a
-                        href="https://drive.google.com/file/d/1Tgz65BS6yddCyyBJaJnlFdbKWhgYSfS7/view?usp=drive_link"
+                        href="https://drive.google.com/file/d/1MnFlzlUl9SeffkXMTJ_8wW2j7jvpZ2Nt/view?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.1, y: -2 }}

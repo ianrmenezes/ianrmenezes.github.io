@@ -50,7 +50,7 @@ export default function About() {
             className="pt-8"
           >
             <a
-              href="https://drive.google.com/file/d/1Tgz65BS6yddCyyBJaJnlFdbKWhgYSfS7/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1MnFlzlUl9SeffkXMTJ_8wW2j7jvpZ2Nt/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-black/80 backdrop-blur-sm border border-black/20 rounded-full text-white font-medium hover:bg-black/90 transition-all duration-300 hover:scale-105"
