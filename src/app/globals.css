@@ -19,10 +19,12 @@ html,
 body {
   max-width: 100%;
   overflow-x: hidden;
+  overflow-y: auto;
   font-family: 'Inter', sans-serif;
   width: 100%;
   position: relative;
   min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -56,6 +58,23 @@ a {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Ensure proper scrolling */
+body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* Prevent any interference with scroll events */
+* {
+  scroll-behavior: auto;
+}
+
+/* Ensure main content is scrollable */
+main {
+  overflow: visible !important;
+  position: relative;
 }
 
 /* Selection styles */

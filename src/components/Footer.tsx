@@ -28,8 +28,28 @@ export default function Footer() {
     },
   ];
 
-  const scrollToTop = () =>
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToTop = () => {
+    const startPosition = window.pageYOffset;
+    const duration = 800; // 0.8 second duration
+    let start: number | null = null;
+    
+    const animateScroll = (currentTime: number) => {
+      if (start === null) start = currentTime;
+      const timeElapsed = currentTime - start;
+      const progress = Math.min(timeElapsed / duration, 1);
+      
+      // Easing function for smooth deceleration
+      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+      
+      window.scrollTo(0, startPosition * (1 - easeOutCubic));
+      
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+    
+    requestAnimationFrame(animateScroll);
+  };
 
   return (
     <footer ref={ref} className="py-16 px-0 border-t border-white/10">
@@ -80,7 +100,7 @@ export default function Footer() {
               Software Developer at Blink Gaming Gadgets
             </p>
             <p className="text-gray-400 text-sm leading-relaxed mt-1 drop-shadow-md shadow-gray-400/40 hover:scale-105 hover:drop-shadow-lg hover:shadow-gray-400/60 transition-all duration-300 cursor-pointer">
-              with a passion for technology and problem-solving
+              with a passion for technology and problem-solving.
             </p>
             </motion.div>
 

@@ -33,14 +33,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "relative overflow-x-hidden")}>
+      <body className={cn(inter.className, "relative overflow-x-hidden overflow-y-auto")}>
         {/* Content layer - separate from backgrounds */}
-        <div className="relative z-10 w-full min-h-screen">
+        <div className="relative z-10 w-full min-h-screen overflow-visible">
           {children}
         </div>
         
         {/* Background layer - completely isolated */}
-        <div className="fixed inset-0 -z-50 pointer-events-none">
+        <div className="fixed inset-0 -z-50 pointer-events-none overflow-hidden">
           <BeamsBackground className="absolute inset-0" intensity="strong" />
           <BackgroundPaths className="absolute inset-0" />
         </div>

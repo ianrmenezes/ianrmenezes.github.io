@@ -10,14 +10,32 @@ export default function Hero() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80; // Add some offset for better positioning
+      const offset = 100; // Increased offset for better positioning
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      // Use requestAnimationFrame for smoother scrolling
+      const startPosition = window.pageYOffset;
+      const distance = offsetPosition - startPosition;
+      const duration = 1000; // 1 second duration
+      let start: number | null = null;
+      
+      const animateScroll = (currentTime: number) => {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const progress = Math.min(timeElapsed / duration, 1);
+        
+        // Easing function for smooth deceleration
+        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+        
+        window.scrollTo(0, startPosition + distance * easeOutCubic);
+        
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animateScroll);
+        }
+      };
+      
+      requestAnimationFrame(animateScroll);
     }
   };
 
