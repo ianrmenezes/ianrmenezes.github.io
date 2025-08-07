@@ -1,23 +1,28 @@
 "use client";
 
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, ChevronDown } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
 
 export default function Hero() {
   const { ref, isInView } = useInView({ triggerOnce: true });
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
+    if (isScrolling) return; // Prevent multiple rapid clicks
+    
+    setIsScrolling(true);
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 100; // Increased offset for better positioning
+      const offset = 80; // Reduced offset for faster positioning
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       
-      // Use requestAnimationFrame for smoother scrolling
+      // Much faster, more responsive scrolling
       const startPosition = window.pageYOffset;
       const distance = offsetPosition - startPosition;
-      const duration = 1000; // 1 second duration
+      const duration = 250; // Reduced to 0.25 seconds for much faster response
       let start: number | null = null;
       
       const animateScroll = (currentTime: number) => {
@@ -25,17 +30,21 @@ export default function Hero() {
         const timeElapsed = currentTime - start;
         const progress = Math.min(timeElapsed / duration, 1);
         
-        // Easing function for smooth deceleration
-        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+        // Much faster easing function for instant response
+        const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
         
-        window.scrollTo(0, startPosition + distance * easeOutCubic);
+        window.scrollTo(0, startPosition + distance * easeOutExpo);
         
         if (timeElapsed < duration) {
           requestAnimationFrame(animateScroll);
+        } else {
+          setIsScrolling(false); // Re-enable scrolling after animation
         }
       };
       
       requestAnimationFrame(animateScroll);
+    } else {
+      setIsScrolling(false);
     }
   };
 
@@ -67,7 +76,7 @@ export default function Hero() {
               onClick={() => scrollToSection('about')}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="hover:text-blue-400 transition-colors duration-300 relative group"
+              className="hover:text-blue-400 focus:outline-none focus:ring-0 transition-colors duration-300 relative group"
             >
               ABOUT
               <motion.div
@@ -81,7 +90,7 @@ export default function Hero() {
               onClick={() => scrollToSection('experience')}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="hover:text-blue-400 transition-colors duration-300 relative group"
+              className="hover:text-blue-400 focus:outline-none focus:ring-0 transition-colors duration-300 relative group"
             >
               EXPERIENCE
               <motion.div
@@ -95,7 +104,7 @@ export default function Hero() {
               onClick={() => scrollToSection('projects')}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="hover:text-blue-400 transition-colors duration-300 relative group"
+              className="hover:text-blue-400 focus:outline-none focus:ring-0 transition-colors duration-300 relative group"
             >
               PROJECTS
               <motion.div
@@ -111,7 +120,7 @@ export default function Hero() {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.1, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="hover:text-blue-400 transition-colors duration-300 relative group cursor-pointer"
+                        className="hover:text-blue-400 focus:outline-none focus:ring-0 transition-colors duration-300 relative group cursor-pointer"
                       >
               RESUME
               <motion.div
@@ -136,7 +145,7 @@ export default function Hero() {
             whileTap={{ scale: 0.95 }}
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="text-white/60 hover:text-white cursor-pointer transition-colors duration-300"
+            className="text-white/60 hover:text-white focus:outline-none focus:ring-0 cursor-pointer transition-colors duration-300"
           >
             <ChevronDown className="w-6 h-6" />
           </motion.button>

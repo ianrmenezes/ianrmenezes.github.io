@@ -1,11 +1,13 @@
 "use client";
 
+import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 export default function Footer() {
   const { ref, isInView } = useInView({ triggerOnce: true });
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const socialLinks = [
     {
@@ -29,8 +31,11 @@ export default function Footer() {
   ];
 
   const scrollToTop = () => {
+    if (isScrolling) return; // Prevent multiple rapid clicks
+    
+    setIsScrolling(true);
     const startPosition = window.pageYOffset;
-    const duration = 800; // 0.8 second duration
+    const duration = 200; // Reduced to 0.2 seconds for much faster response
     let start: number | null = null;
     
     const animateScroll = (currentTime: number) => {
@@ -38,13 +43,15 @@ export default function Footer() {
       const timeElapsed = currentTime - start;
       const progress = Math.min(timeElapsed / duration, 1);
       
-      // Easing function for smooth deceleration
-      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+      // Much faster easing function for instant response
+      const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       
-      window.scrollTo(0, startPosition * (1 - easeOutCubic));
+      window.scrollTo(0, startPosition * (1 - easeOutExpo));
       
       if (timeElapsed < duration) {
         requestAnimationFrame(animateScroll);
+      } else {
+        setIsScrolling(false); // Re-enable scrolling after animation
       }
     };
     
