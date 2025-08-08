@@ -24,12 +24,21 @@ body {
   width: 100%;
   position: relative;
   min-height: 100vh;
+  /* Restore smooth scrolling for normal mouse wheel */
   scroll-behavior: smooth;
+  /* Ensure mouse wheel scrolling works */
+  height: 100%;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
+  /* Ensure smooth scrolling performance */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+  /* Ensure mouse wheel scrolling works */
+  height: 100%;
+  overflow-y: scroll;
 }
 
 a {
@@ -55,7 +64,7 @@ a {
   background: #555;
 }
 
-/* Smooth scrolling */
+/* Restore smooth scrolling for normal scrolling */
 html {
   scroll-behavior: smooth;
 }
@@ -64,17 +73,23 @@ html {
 body {
   overflow-y: auto !important;
   overflow-x: hidden !important;
+  /* Allow normal scroll behavior */
+  scroll-behavior: smooth !important;
 }
 
-/* Prevent any interference with scroll events */
+/* Allow normal scroll behavior for all elements */
 * {
   scroll-behavior: auto;
+  /* Improve scroll performance */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Ensure main content is scrollable */
 main {
   overflow: visible !important;
   position: relative;
+  /* Allow normal scroll behavior */
+  scroll-behavior: smooth;
 }
 
 /* Selection styles */

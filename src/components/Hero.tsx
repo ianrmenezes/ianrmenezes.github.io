@@ -4,46 +4,42 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, ChevronDown } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
+import { smoothScrollTo, getElementPosition } from '@/lib/utils';
 
 export default function Hero() {
   const { ref, isInView } = useInView({ triggerOnce: true });
   const [isScrolling, setIsScrolling] = useState(false);
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = async (sectionId: string) => {
     if (isScrolling) return; // Prevent multiple rapid clicks
     
     setIsScrolling(true);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80; // Reduced offset for faster positioning
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+    
+    try {
+      const targetPosition = getElementPosition(sectionId, 80);
       
-      // Much faster, more responsive scrolling
-      const startPosition = window.pageYOffset;
-      const distance = offsetPosition - startPosition;
-      const duration = 250; // Reduced to 0.25 seconds for much faster response
-      let start: number | null = null;
+      if (targetPosition === 0) {
+        console.warn(`Element with id '${sectionId}' not found`);
+        setIsScrolling(false);
+        return;
+      }
+
+      // Use the improved smooth scroll utility
+      await smoothScrollTo(targetPosition, 250);
       
-      const animateScroll = (currentTime: number) => {
-        if (start === null) start = currentTime;
-        const timeElapsed = currentTime - start;
-        const progress = Math.min(timeElapsed / duration, 1);
-        
-        // Much faster easing function for instant response
-        const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-        
-        window.scrollTo(0, startPosition + distance * easeOutExpo);
-        
-        if (timeElapsed < duration) {
-          requestAnimationFrame(animateScroll);
-        } else {
-          setIsScrolling(false); // Re-enable scrolling after animation
-        }
-      };
+    } catch (error) {
+      console.error('Scroll error:', error);
       
-      requestAnimationFrame(animateScroll);
-    } else {
+      // Fallback to native smooth scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start',
+          inline: 'nearest'
+        });
+      }
+    } finally {
       setIsScrolling(false);
     }
   };

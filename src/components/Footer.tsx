@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { smoothScrollTo } from "@/lib/utils";
 
 export default function Footer() {
   const { ref, isInView } = useInView({ triggerOnce: true });
@@ -30,32 +31,34 @@ export default function Footer() {
     },
   ];
 
-  const scrollToTop = () => {
+  const scrollToTop = async () => {
     if (isScrolling) return; // Prevent multiple rapid clicks
     
     setIsScrolling(true);
-    const startPosition = window.pageYOffset;
-    const duration = 200; // Reduced to 0.2 seconds for much faster response
-    let start: number | null = null;
     
-    const animateScroll = (currentTime: number) => {
-      if (start === null) start = currentTime;
-      const timeElapsed = currentTime - start;
-      const progress = Math.min(timeElapsed / duration, 1);
+    try {
+      const startPosition = window.pageYOffset || document.documentElement.scrollTop;
       
-      // Much faster easing function for instant response
-      const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      
-      window.scrollTo(0, startPosition * (1 - easeOutExpo));
-      
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animateScroll);
-      } else {
-        setIsScrolling(false); // Re-enable scrolling after animation
+      // If already at top, don't scroll
+      if (startPosition < 10) {
+        setIsScrolling(false);
+        return;
       }
-    };
-    
-    requestAnimationFrame(animateScroll);
+
+      // Use the improved smooth scroll utility
+      await smoothScrollTo(0, 200);
+      
+    } catch (error) {
+      console.error('Scroll to top error:', error);
+      
+      // Fallback to native smooth scroll
+      window.scrollTo({ 
+        top: 0, 
+        behavior: 'smooth' 
+      });
+    } finally {
+      setIsScrolling(false);
+    }
   };
 
   return (
