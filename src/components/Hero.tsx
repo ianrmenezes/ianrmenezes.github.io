@@ -13,6 +13,7 @@ export default function Hero() {
   const scrollToSection = async (sectionId: string) => {
     if (isScrolling) return; // Prevent multiple rapid clicks
     
+    console.log(`Attempting to scroll to section: ${sectionId}`);
     setIsScrolling(true);
     
     try {
@@ -20,21 +21,47 @@ export default function Hero() {
       const element = document.getElementById(sectionId);
       if (!element) {
         console.warn(`Element with id '${sectionId}' not found`);
+        console.log('Available elements:', document.querySelectorAll('section[id]'));
+        console.log('All elements with IDs:', document.querySelectorAll('[id]'));
         setIsScrolling(false);
         return;
       }
 
-      // Use smooth scrolling for better UX
-      element.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start',
-        inline: 'nearest'
-      });
+      console.log(`Found element:`, element);
+      console.log(`Element position:`, element.getBoundingClientRect());
+      console.log(`Current scroll position:`, window.pageYOffset || document.documentElement.scrollTop);
+
+      // Test simple scroll first
+      console.log('Testing simple scroll...');
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      
+      // Alternative approach - use window.scrollTo
+      setTimeout(() => {
+        console.log('Testing window.scrollTo...');
+        const rect = element.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetPosition = rect.top + scrollTop - 80;
+        
+        console.log(`Scrolling to position: ${targetPosition}`);
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }, 100);
       
     } catch (error) {
       console.error('Scroll error:', error);
+      // Fallback to simple scroll
+      try {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } catch (fallbackError) {
+        console.error('Fallback scroll also failed:', fallbackError);
+      }
     } finally {
-      setIsScrolling(false);
+      setTimeout(() => setIsScrolling(false), 500);
     }
   };
 

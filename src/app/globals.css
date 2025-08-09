@@ -40,11 +40,13 @@ body {
   background: var(--background);
   /* Single scroll container setup */
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   /* Ensure smooth scrolling performance */
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: none;
+  /* Ensure scrolling works */
+  scroll-behavior: smooth;
 }
 
 a {
@@ -139,6 +141,8 @@ a {
 /* Ensure sections have minimum height for scrolling */
 section {
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 /* Fix for canvas and 3D rendering issues */
@@ -178,16 +182,16 @@ canvas {
   bottom: 0 !important;
 }
 
-/* Counter-transform to neutralize wave tilt */
-.background-container + div {
+/* Remove problematic transforms that interfere with scrolling */
+/* .background-container + div {
   transform: rotateX(-0.5deg) rotateY(0.2deg);
   transform-origin: center center;
   transform-style: preserve-3d;
-}
+} */
 
-/* Alternative approach - apply counter-tilt to main content */
-main, .main-content {
+/* Remove problematic transforms that interfere with scrolling */
+/* main, .main-content {
   transform: rotateX(-0.8deg) rotateY(0.3deg);
   transform-origin: center center;
   transform-style: preserve-3d;
-} 
+} */ 
