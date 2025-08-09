@@ -10,11 +10,7 @@ export default function Experience() {
   const { ref, isInView } = useInView({ triggerOnce: true });
 
   return (
-    <section 
-      id="experience"
-      ref={ref}
-      className="py-20 px-4"
-    >
+    <section id="experience" ref={ref} className="py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -60,7 +56,7 @@ export default function Experience() {
                           <h3 className="text-xl font-bold text-black dark:text-white mb-1">
                             {exp.title}
                           </h3>
-                          <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300 text-sm">
+                          <div className="flex items-center gap-4 text-white dark:text-white text-sm font-medium drop-shadow-lg">
                             <div className="flex items-center gap-1">
                               <Building className="w-4 h-4" />
                               {exp.company}
@@ -80,7 +76,7 @@ export default function Experience() {
                       {/* Description */}
                       <div className="space-y-2 mb-4">
                         {exp.description.map((item, itemIndex) => (
-                          <p key={itemIndex} className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                          <p key={itemIndex} className="text-white dark:text-white text-sm leading-relaxed font-medium drop-shadow-lg">
                             • {item}
                           </p>
                         ))}
@@ -91,7 +87,7 @@ export default function Experience() {
                         {exp.tech.map((tech) => (
                           <span
                             key={tech}
-                            className="px-3 py-1 bg-black/30 dark:bg-white/10 rounded-full text-xs text-gray-800 dark:text-gray-300"
+                            className="px-3 py-1 bg-white/20 dark:bg-white/20 rounded-full text-xs text-white dark:text-white font-medium drop-shadow-lg"
                           >
                             {tech}
                           </span>

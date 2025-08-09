@@ -16,29 +16,23 @@ export default function Hero() {
     setIsScrolling(true);
     
     try {
-      const targetPosition = getElementPosition(sectionId, 80);
-      
-      if (targetPosition === 0) {
+      // Find the element
+      const element = document.getElementById(sectionId);
+      if (!element) {
         console.warn(`Element with id '${sectionId}' not found`);
         setIsScrolling(false);
         return;
       }
 
-      // Use the improved smooth scroll utility
-      await smoothScrollTo(targetPosition, 250);
+      // Use smooth scrolling for better UX
+      element.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start',
+        inline: 'nearest'
+      });
       
     } catch (error) {
       console.error('Scroll error:', error);
-      
-      // Fallback to native smooth scroll
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start',
-          inline: 'nearest'
-        });
-      }
     } finally {
       setIsScrolling(false);
     }
@@ -47,7 +41,7 @@ export default function Hero() {
   return (
     <section 
       ref={ref}
-      className="min-h-screen flex flex-col items-center justify-center relative px-4"
+      className="h-screen flex flex-col items-center justify-center relative px-4"
     >
         {/* Main Content */}
         <div className="text-center space-y-8 max-w-4xl mx-auto">
@@ -110,14 +104,14 @@ export default function Hero() {
               />
             </motion.button>
             <span className="text-gray-400">·</span>
-                                  <motion.a
-                        href="https://drive.google.com/file/d/1MnFlzlUl9SeffkXMTJ_8wW2j7jvpZ2Nt/view?usp=drive_link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="hover:text-blue-400 focus:outline-none focus:ring-0 transition-colors duration-300 relative group cursor-pointer"
-                      >
+            <motion.a
+              href="https://drive.google.com/file/d/1MnFlzlUl9SeffkXMTJ_8wW2j7jvpZ2Nt/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="hover:text-blue-400 focus:outline-none focus:ring-0 transition-colors duration-300 relative group cursor-pointer"
+            >
               RESUME
               <motion.div
                 className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
