@@ -112,16 +112,16 @@ export default function Projects() {
                        <div className="aspect-video relative overflow-hidden">
                          {/* Real Project Images */}
                          <img 
-                           src={project.id === 'alertmate' ? 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=450&fit=crop&crop=center' :
-                                                                 project.id === 'wordz' ? 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=450&fit=crop&crop=center' :
-                                project.id === 'weather-app' ? 'https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=450&fit=crop&crop=center' :
-                                project.id === 'tracknext' ? 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=450&fit=crop&crop=center' :
-                                                                 project.id === 'grade-calculator' ? 'https://images.unsplash.com/photo-1513258496099-48168024aec0?w=800&h=450&fit=crop&crop=center' :
-                                project.id === 'travel-food-blog' ? 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=450&fit=crop&crop=center' :
-                                project.id === 'todoflow' ? 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=450&fit=crop&crop=center' :
+                           src={project.id === 'alertmate' ? '/alertmate.jpg?v=2' :
+                                                                  project.id === 'wordz' ? '/wordz.png?v=1' :
+                                project.id === 'weather-app' ? '/weather-app.png?v=2' :
+                                project.id === 'tracknext' ? '/tracknext.png?v=1' :
+                                                                  project.id === 'grade-calculator' ? '/gradecalc.png?v=1' :
+                                project.id === 'travel-food-blog' ? '/travel-food-blog.png?v=3' :
+                                project.id === 'todoflow' ? '/todoflow.png?v=1' :
                                 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=450&fit=crop&crop=center'}
                            alt={`${project.title} screenshot`}
-                           className="w-full h-full object-cover"
+                           className={`w-full h-full ${project.id === 'alertmate' ? 'object-cover object-center origin-center' : 'object-cover'} ${['wordz','weather-app','tracknext','grade-calculator','travel-food-blog','todoflow'].includes(project.id) ? 'object-top' : ''}`}
                          />
                          
                          {/* Dark Overlay for Better Text Readability */}
