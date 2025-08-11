@@ -25,7 +25,17 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-4xl md:text-5xl font-bold text-black dark:text-white"
+            className="text-4xl md:text-5xl font-bold text-black dark:text-white drop-shadow-lg hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer"
+            style={{
+              transition: 'all 0.1s ease-out',
+              transform: 'translateY(0) scale(1)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0) scale(1)';
+            }}
           >
             About Me
           </motion.h2>
@@ -35,11 +45,13 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-lg md:text-xl text-gray-800 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto"
+            className="text-base md:text-lg leading-relaxed max-w-3xl mx-auto"
           >
-            <p className="text-center">
-              I'm Ian Menezes, a third-year Computer Science student at the University of Guelph with a strong interest in technology, problem-solving, and creating meaningful digital experiences. I enjoy developing projects that combine functionality with simplicity, exploring new tools and frameworks, and working with others to bring ideas to life. My goal is to continue building skills that allow me to design practical solutions for real-world challenges.
-            </p>
+            <div className="bg-slate-900/95 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 shadow-lg hover:bg-slate-800/95 hover:border-slate-600/60 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 ease-out cursor-pointer">
+                              <p className="text-center text-white font-normal">
+                  A curious and adaptable developer passionate about turning ideas into simple, functional, and impactful digital solutions. My journey in tech started with a fascination for how things work, and I've since worked on projects ranging from websites to mobile apps. I enjoy learning new technologies, solving problems, and collaborating with others to bring ideas to life — always aiming to make technology useful and enjoyable.
+                </p>
+            </div>
           </motion.div>
 
           {/* Resume Button */}
@@ -53,7 +65,7 @@ export default function About() {
               href="https://drive.google.com/file/d/1MnFlzlUl9SeffkXMTJ_8wW2j7jvpZ2Nt/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-black/80 backdrop-blur-sm border border-black/20 rounded-full text-white font-medium hover:bg-black/90 transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-500/80 backdrop-blur-sm border border-blue-400/30 rounded-full text-white font-medium hover:bg-blue-600/90 transition-all duration-300 hover:scale-105"
             >
               <Download className="w-5 h-5" />
               View My Resume

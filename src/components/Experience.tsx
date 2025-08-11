@@ -22,7 +22,17 @@ export default function Experience() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-4xl md:text-5xl font-bold text-black dark:text-white text-center mb-16"
+            className="text-4xl md:text-5xl font-bold text-black dark:text-white text-center mb-16 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer"
+            style={{
+              transition: 'all 0.1s ease-out',
+              transform: 'translateY(0) scale(1)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0) scale(1)';
+            }}
           >
             Experience
           </motion.h2>

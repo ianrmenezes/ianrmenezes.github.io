@@ -1,21 +1,19 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
-import { smoothScrollTo } from "@/lib/utils";
 
 export default function Footer() {
   const { ref, isInView } = useInView({ triggerOnce: true });
-  const [isScrolling, setIsScrolling] = useState(false);
 
   const socialLinks = [
     {
       name: "GitHub",
       url: "https://github.com/ianrmenezes",
       icon: Github,
-      color: "hover:text-gray-400",
+      color: "hover:text-green-400",
     },
     {
       name: "LinkedIn",
@@ -27,38 +25,22 @@ export default function Footer() {
       name: "Email",
       url: "mailto:menezesian145@gmail.com",
       icon: Mail,
-      color: "hover:text-red-400",
+      color: "hover:text-yellow-400",
     },
   ];
 
-  const scrollToTop = async () => {
-    if (isScrolling) return; // Prevent multiple rapid clicks
+  const handleScrollToTop = () => {
+    // Target the actual scroll container (body)
+    document.body.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
     
-    setIsScrolling(true);
-    
-    try {
-      const startPosition = window.pageYOffset || document.documentElement.scrollTop;
-      
-      // If already at top, don't scroll
-      if (startPosition < 10) {
-        setIsScrolling(false);
-        return;
-      }
-
-      // Use the improved smooth scroll utility
-      await smoothScrollTo(0, 200);
-      
-    } catch (error) {
-      console.error('Scroll to top error:', error);
-      
-      // Fallback to native smooth scroll
-      window.scrollTo({ 
-        top: 0, 
-        behavior: 'smooth' 
-      });
-    } finally {
-      setIsScrolling(false);
-    }
+    // Also try window as fallback
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   return (
@@ -77,21 +59,16 @@ export default function Footer() {
             transition={{ duration: 0.8, delay: 0.05, ease: "easeOut" }}
             className="flex justify-center mb-8 lg:mr-6"
           >
-            <motion.button
-              onClick={scrollToTop}
-              whileHover={{
-                scale: 1.1,
-                y: -4,
-                transition: { duration: 0.3, ease: "easeOut" },
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm
-                         border border-white/10 rounded-full text-white transition-all
-                         duration-300 hover:bg-white/10 cursor-pointer"
+            <button
+              onClick={handleScrollToTop}
+              className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 
+                         border border-white/20 rounded-full text-white font-medium
+                         transition-all duration-200 cursor-pointer z-50 relative
+                         hover:scale-105 active:scale-95 transform"
             >
               <ArrowUp className="w-5 h-5" />
               <span className="font-medium">Back to Top</span>
-            </motion.button>
+            </button>
           </motion.div>
 
           {/* Top Row - Name on left, Social Links in middle */}
