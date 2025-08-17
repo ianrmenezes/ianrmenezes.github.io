@@ -23,9 +23,9 @@ export const experience: Experience[] = [
       end: undefined
     },
     description: [
-      'Developed an ESS portal and contributed to testing web applications as part of a collaborative team',
-      'Worked on-site in Kuwait City as part of a co-op program',
-      'Collaborated with team members to deliver high-quality software solutions'
+      'Developed an Employee Self-Service (ESS) portal, implementing features and assisting with end-to-end testing of web applications.',
+      'Collaborated with team members to design, debug, and enhance software solutions, improving reliability and user experience.',
+      'Learned and adapted to team workflows and development processes, gaining insight into project planning, task prioritization, and collaborative software development practices.'
     ],
     tech: ['Web Development', 'Testing', 'Collaborative Development'],
     type: 'co-op'
@@ -40,9 +40,9 @@ export const experience: Experience[] = [
       end: '2024-09'
     },
     description: [
-      'Provided technical support by troubleshooting issues and maintaining web design',
-      'Configured hardware and managed databases to ensure smooth operations',
-      'Gained hands-on experience in IT operations and technical problem-solving'
+      'Troubleshot and maintained websites to ensure smooth operation and user accessibility',
+      'Configured hardware and software for new devices, enabling efficient setup for new employees',
+      'Managed databases to optimize data storage and improve retrieval efficiency.'
     ],
     tech: ['Technical Support', 'Hardware Configuration', 'Database Management', 'Web Design'],
     type: 'internship'
@@ -59,9 +59,9 @@ export const experience: Experience[] = [
     description: [
       'Completed cross-exposure training at St. Regis, Sheraton – A Luxury Collection Hotel, and Four Points by Sheraton',
       'Gained hands-on experience in various hotel operations and customer service within prestigious hospitality environments',
-      'Developed strong customer service skills and understanding of luxury hospitality operations'
+      'Learned to manage time effectively and coordinate tasks in a fast-paced luxury hotel setting'
     ],
-    tech: ['Customer Service', 'Hotel Operations', 'Cross-functional Training'],
+    tech: ['Customer Service', 'Hotel Operations', 'Cross-functional Training', 'Time Management'],
     type: 'internship'
   }
 ]; 

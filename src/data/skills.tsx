@@ -15,7 +15,6 @@ import {
   SiExpress,
   SiDocker,
   SiFlutter,
-  SiAmazon,          // Simple‑Icons uses the generic Amazon glyph for AWS
   SiGooglecloud,
   SiR,
   SiC,
@@ -83,7 +82,6 @@ export const skills: Skill[] = [
   { id: 'docker',       name: 'Docker',        icon: SiDocker,      color: '#2496ED', category: 'devops', size: 48 },
 
   // Cloud
-  { id: 'aws',          name: 'AWS',           icon: SiAmazon,      color: '#FF9900', category: 'devops', size: 56 },
   { id: 'firebase',     name: 'Firebase',      icon: SiFirebase,    color: '#FFCA28', category: 'devops' },
   { id: 'googlecloud',  name: 'Google Cloud',  icon: GoogleCloudIcon, color: '#4285F4', category: 'devops', size: 56 },
 ];
