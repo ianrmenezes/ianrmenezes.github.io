@@ -1,18 +1,30 @@
+// ────────────────────────────────────────────────────────────────────────────────
+//  PROJECTS DATA - Your portfolio projects
+// ────────────────────────────────────────────────────────────────────────────────
+// This file defines all your projects that appear in the Projects section
+// Images should be placed in the public/ folder
+
+// TypeScript interface defining the structure of each project
 export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  thumbnail: string;
-  tech: string[];
-  status: 'completed' | 'ongoing';
-  type: 'personal' | 'group' | 'academic';
-  links: {
-    repo?: string;
-    live?: string;
-    demo?: string;
+  id: string;                                   // Unique identifier (e.g., 'alertmate')
+  title: string;                                // Project name (e.g., 'AlertMate')
+  description: string;                          // Brief description of what the project does
+  thumbnail: string;                            // Image path (e.g., '/alertmate.jpg')
+  tech: string[];                               // Technologies used (e.g., ['React', 'Node.js'])
+  status: 'completed' | 'ongoing';              // Current status of the project
+  type: 'personal' | 'group' | 'academic';     // Project category
+  links: {                                      // External links
+    repo?: string;                              // GitHub repository (optional)
+    live?: string;                              // Live demo URL (optional)
+    demo?: string;                              // Demo video URL (optional)
   };
-  featured?: boolean;
+  featured?: boolean;                           // Whether to highlight this project (optional)
 }
+
+// ────────────────────────────────────────────────────────────────────────────────
+//  YOUR PROJECTS - Add new projects at the top
+// ────────────────────────────────────────────────────────────────────────────────
+// Projects are displayed in the order they appear in this array
 
 export const projects: Project[] = [
   {

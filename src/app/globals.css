@@ -1,123 +1,150 @@
+/* ────────────────────────────────────────────────────────────────────────────────
+   GLOBAL STYLES - Main CSS file for the entire portfolio
+   ──────────────────────────────────────────────────────────────────────────────── */
+
+/* Import Tailwind CSS utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Import Inter font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
+/* CSS custom properties (variables) for consistent theming */
 :root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
+  --background: #0a0a0a;  /* Dark background color */
+  --foreground: #ffffff;  /* White text color */
 }
 
+/* ────────────────────────────────────────────────────────────────────────────────
+   RESET STYLES - Remove default browser styles
+   ──────────────────────────────────────────────────────────────────────────────── */
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  box-sizing: border-box;  /* Make padding/border included in element width */
+  padding: 0;              /* Remove default padding */
+  margin: 0;               /* Remove default margins */
 }
 
+/* ────────────────────────────────────────────────────────────────────────────────
+   SCROLL SETUP - Critical for smooth scrolling functionality
+   ──────────────────────────────────────────────────────────────────────────────── */
 html {
   height: 100%;
-  overflow-x: hidden;
-  /* Ensure stable positioning */
-  position: relative;
-  transform: none;
+  overflow-x: hidden;      /* Prevent horizontal scrollbars */
+  position: relative;      /* Ensure stable positioning */
+  transform: none;         /* Prevent 3D transform issues */
 }
 
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
-  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;      /* Prevent horizontal scrollbars */
+  font-family: 'Inter', sans-serif;  /* Use Inter font throughout */
   width: 100%;
   position: relative;
-  /* Ensure no transforms or perspective issues */
-  transform: none;
-  perspective: none;
+  transform: none;         /* Prevent transform issues that cause tilt */
+  perspective: none;       /* Prevent 3D perspective issues */
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  /* Single scroll container setup */
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  /* Ensure smooth scrolling performance */
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: none;
-  /* Ensure scrolling works */
-  scroll-behavior: smooth;
+  color: var(--foreground);           /* Use white text */
+  background: var(--background);      /* Use dark background */
+  
+  /* ── SCROLL CONTAINER SETUP ── */
+  height: 100vh;                      /* Full viewport height */
+  overflow-y: auto;                   /* Enable vertical scrolling */
+  overflow-x: hidden;                 /* Prevent horizontal scrolling */
+  
+  /* ── SCROLL PERFORMANCE ── */
+  -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
+  overscroll-behavior: none;          /* Prevent bounce scrolling */
+  scroll-behavior: smooth;            /* Smooth scroll for navigation */
 }
 
+/* ────────────────────────────────────────────────────────────────────────────────
+   LINK STYLES
+   ──────────────────────────────────────────────────────────────────────────────── */
 a {
-  color: inherit;
-  text-decoration: none;
+  color: inherit;          /* Inherit text color from parent */
+  text-decoration: none;   /* Remove underlines from links */
 }
 
-/* Custom scrollbar */
+/* ────────────────────────────────────────────────────────────────────────────────
+   CUSTOM SCROLLBAR - Style the browser scrollbar
+   ──────────────────────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 8px;              /* Thin scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #1a1a1a;    /* Dark scrollbar track */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: #333;        /* Gray scrollbar thumb */
+  border-radius: 4px;      /* Rounded corners */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #555;        /* Lighter gray on hover */
 }
 
-/* Selection styles */
+/* ────────────────────────────────────────────────────────────────────────────────
+   ACCESSIBILITY & INTERACTION STYLES
+   ──────────────────────────────────────────────────────────────────────────────── */
+/* Text selection color */
 ::selection {
-  background: rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.3);  /* Blue selection background */
   color: white;
 }
 
-/* Focus styles */
+/* Focus outline for keyboard navigation */
 *:focus {
-  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline: 2px solid rgba(59, 130, 246, 0.5);  /* Blue focus outline */
   outline-offset: 2px;
 }
 
-/* Custom animations */
+/* ────────────────────────────────────────────────────────────────────────────────
+   CUSTOM ANIMATIONS - Entrance animations for elements
+   ──────────────────────────────────────────────────────────────────────────────── */
+
+/* Fade in from bottom animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(30px);  /* Start 30px below */
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0);     /* End at normal position */
   }
 }
 
+/* Fade in from left animation */
 @keyframes fadeInLeft {
   from {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateX(-30px); /* Start 30px to the left */
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0);     /* End at normal position */
   }
 }
 
+/* Fade in from right animation */
 @keyframes fadeInRight {
   from {
     opacity: 0;
-    transform: translateX(30px);
+    transform: translateX(30px);  /* Start 30px to the right */
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0);     /* End at normal position */
   }
 }
 
+/* CSS classes to apply animations */
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out;
 }
@@ -130,68 +157,87 @@ a {
   animation: fadeInRight 0.6s ease-out;
 }
 
-/* Line clamp utility */
+/* ────────────────────────────────────────────────────────────────────────────────
+   UTILITY CLASSES - Helpful CSS utilities
+   ──────────────────────────────────────────────────────────────────────────────── */
+
+/* Limit text to 2 lines with ellipsis */
 .line-clamp-2 {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 2;           /* Show only 2 lines */
   -webkit-box-orient: vertical;
-  overflow: hidden;
+  overflow: hidden;                /* Hide overflow text */
 }
 
-/* Ensure sections have minimum height for scrolling */
+/* ────────────────────────────────────────────────────────────────────────────────
+   SECTION LAYOUT - Each page section (Hero, About, Projects, etc.)
+   ──────────────────────────────────────────────────────────────────────────────── */
 section {
-  min-height: 100vh;
-  position: relative;
-  z-index: 1;
+  min-height: 100vh;   /* Each section takes full screen height */
+  position: relative;   /* Allow absolute positioning within sections */
+  z-index: 1;          /* Keep sections above background but below modals */
 }
 
-/* Fix for canvas and 3D rendering issues */
+/* ────────────────────────────────────────────────────────────────────────────────
+   CANVAS FIX - Prevent 3D rendering issues in background animations
+   ──────────────────────────────────────────────────────────────────────────────── */
 canvas {
-  transform: none !important;
-  perspective: none !important;
-  transform-style: flat !important;
+  transform: none !important;        /* Disable transforms on canvas */
+  perspective: none !important;      /* Disable 3D perspective */
+  transform-style: flat !important;  /* Force flat rendering */
 }
 
-/* Background positioning fix to prevent tilt during scroll */
+/* ────────────────────────────────────────────────────────────────────────────────
+   BACKGROUND CONTAINER - Critical for preventing tilt issues
+   ──────────────────────────────────────────────────────────────────────────────── */
+
+/* Main container for all background animations */
 .background-container {
-  position: fixed;
+  position: fixed;                   /* Stay in place while content scrolls */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
-  will-change: transform;
-  /* Ensure no transforms cause tilt */
-  transform: none;
-  transform-origin: center center;
-  /* Isolate waves from affecting page layout */
-  isolation: isolate;
-  contain: layout style paint;
+  will-change: transform;            /* Optimize for animations */
+  
+  /* ── PREVENT TILT ISSUES ── */
+  transform: none;                   /* No transforms to prevent tilt */
+  transform-origin: center center;   /* Center transform origin */
+  
+  /* ── ISOLATE BACKGROUND EFFECTS ── */
+  isolation: isolate;                /* Create new stacking context */
+  contain: layout style paint;       /* Contain layout calculations */
 }
 
-/* Fix for waves causing tilt - isolate their effects */
+/* Force all background children to behave properly */
 .background-container > div {
-  transform: none !important;
+  transform: none !important;               /* Force no transforms */
   transform-origin: center center !important;
-  /* Ensure waves don't affect page positioning */
-  position: absolute !important;
+  
+  /* ── ENSURE PROPER POSITIONING ── */
+  position: absolute !important;            /* Absolute positioning */
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
 }
 
-/* Remove problematic transforms that interfere with scrolling */
+/* ────────────────────────────────────────────────────────────────────────────────
+   DISABLED TRANSFORMS - These caused tilt issues during scrolling
+   ──────────────────────────────────────────────────────────────────────────────── */
+
+/* DISABLED: These transforms caused content to tilt during scroll */
 /* .background-container + div {
-  transform: rotateX(-0.5deg) rotateY(0.2deg);
+  transform: rotateX(-0.5deg) rotateY(0.2deg);  // This caused tilt issues
   transform-origin: center center;
   transform-style: preserve-3d;
 } */
 
-/* Remove problematic transforms that interfere with scrolling */
+/* DISABLED: These transforms interfered with smooth scrolling */
 /* main, .main-content {
-  transform: rotateX(-0.8deg) rotateY(0.3deg);
+  transform: rotateX(-0.8deg) rotateY(0.3deg);  // This caused scroll problems
   transform-origin: center center;
   transform-style: preserve-3d;
 } */ 
