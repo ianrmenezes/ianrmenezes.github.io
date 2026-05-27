@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from '@/hooks/useInView';
 import { skills } from '@/data/skills';
-import JavaIcon from '@/components/JavaIcon';
+import JavaIcon from '@/components/icons/JavaIcon';
 import { CCppIcon } from '@/data/skills';
 
 const SkillsMarquee = () => {

@@ -7,10 +7,10 @@ import {
   SiStreamlit, SiCss3, SiAmazonwebservices,
 } from 'react-icons/si';
 
-import DartIcon from '@/components/DartIcon';
-import JavaIcon from '@/components/JavaIcon';
-import GoogleCloudIcon from '@/components/GoogleCloudIcon';
-import SQLIcon from '@/components/SQLIcon';
+import DartIcon from '@/components/icons/DartIcon';
+import JavaIcon from '@/components/icons/JavaIcon';
+import GoogleCloudIcon from '@/components/icons/GoogleCloudIcon';
+import SQLIcon from '@/components/icons/SQLIcon';
 
 // ── Inline SVG icons for tools with no simple-icons entry ──
 
