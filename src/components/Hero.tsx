@@ -35,9 +35,8 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
-          whileHover={{ y: -4, scale: 1.02 }}
           transition={{ type: 'tween', duration: 0.12 }}
+          whileHover={{ y: -4, scale: 1.02 }}
           className="text-[#1e3a5f] text-base md:text-lg leading-relaxed font-semibold max-w-xl mx-auto cursor-default"
         >
           Hi I&apos;m Ian, Computer Science student @ UofG with a passion for
