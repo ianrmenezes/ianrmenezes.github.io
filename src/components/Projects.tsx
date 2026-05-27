@@ -16,11 +16,8 @@ const IMAGE_MAP: Record<string, string> = {
   'arkhive':          '/arkhive.jpeg',
   'alertmate':        '/alertmate.jpg',
   'wordz':            '/wordz.png',
-  'weather-app':      '/weather-app.png',
   'tracknext':        '/tracknext.png',
-  'grade-calculator': '/gradecalc.png',
   'travel-food-blog': '/travel-food-blog.png',
-  'todoflow':         '/todoflow.png',
 };
 
 export default function Projects() {

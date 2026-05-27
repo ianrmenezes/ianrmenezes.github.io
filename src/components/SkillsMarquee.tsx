@@ -46,8 +46,8 @@ const SkillsMarquee = () => {
 
         {/* Row 1 — left to right */}
         <div className="mb-6 relative">
-          <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-[#93c5fd] to-transparent pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-[#93c5fd] to-transparent pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-10 md:w-20 z-10 bg-gradient-to-r from-[#93c5fd] to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-10 md:w-20 z-10 bg-gradient-to-l from-[#93c5fd] to-transparent pointer-events-none" />
           <div className="overflow-hidden">
             <motion.div
               ref={row1Ref}
@@ -73,8 +73,8 @@ const SkillsMarquee = () => {
 
         {/* Row 2 — right to left */}
         <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-[#93c5fd] to-transparent pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-[#93c5fd] to-transparent pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-10 md:w-20 z-10 bg-gradient-to-r from-[#93c5fd] to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-10 md:w-20 z-10 bg-gradient-to-l from-[#93c5fd] to-transparent pointer-events-none" />
           <div className="overflow-hidden">
             <motion.div
               ref={row2Ref}

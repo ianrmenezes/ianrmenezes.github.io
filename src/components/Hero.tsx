@@ -54,7 +54,7 @@ export default function Hero() {
         >
           <BubbleWrapper>
             <a
-              href="https://drive.google.com/file/d/167lURCr_XJPq1k_84rTj9GRcNajFYeOz/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1Kel8s-FytkCdRfJ-JS0mF1hrVX4-uzDM/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#5b8fa8] rounded-full text-white font-bold hover:bg-[#4a7fa5] transition-colors duration-150 shadow-md"

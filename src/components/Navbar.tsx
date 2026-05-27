@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Menu, X } from 'lucide-react';
+
+const RESUME_URL = "https://drive.google.com/file/d/1Kel8s-FytkCdRfJ-JS0mF1hrVX4-uzDM/view?usp=sharing";
 
 const bubbleConfigs = [
   { size: 6,  left: '10%', delay: 0    },
@@ -69,6 +71,7 @@ function NavLink({ children, href }: { children: React.ReactNode; href: string }
 export default function Navbar() {
   const [visible, setVisible] = useState(true);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setVisible(document.body.scrollTop < 80);
@@ -77,6 +80,7 @@ export default function Navbar() {
   }, []);
 
   const scrollToSection = (id: string) => {
+    setMenuOpen(false);
     if (isScrolling) return;
     setIsScrolling(true);
     const el = document.getElementById(id);
@@ -85,6 +89,12 @@ export default function Navbar() {
     document.body.scrollTo({ top: document.body.scrollTop + rect.top - 80, behavior: 'smooth' });
     setTimeout(() => setIsScrolling(false), 600);
   };
+
+  const navItems = [
+    { label: 'Skills',     id: 'skills' },
+    { label: 'Experience', id: 'experience' },
+    { label: 'Projects',   id: 'projects' },
+  ];
 
   return (
     <AnimatePresence>
@@ -99,7 +109,7 @@ export default function Navbar() {
               transition={{ duration: 0.3, ease: 'easeOut' }}
               className="flex flex-col items-start gap-2 pl-1"
             >
-              <span className="text-[#1e3a5f] font-semibold text-base [font-family:var(--font-fredoka)]">
+              <span className="text-[#1e3a5f] font-semibold text-sm sm:text-base [font-family:var(--font-fredoka)]">
                 Ian Menezes
               </span>
               <div className="flex gap-3.5">
@@ -124,19 +134,68 @@ export default function Navbar() {
             </motion.div>
           </div>
 
-          {/* Nav buttons — top right */}
+          {/* Nav — top right */}
           <div className="fixed top-4 right-4 z-50">
+            {/* Desktop: pill row */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="flex items-center gap-1 bg-white/40 backdrop-blur-md rounded-full px-2 py-1.5 shadow-lg shadow-blue-200/40"
+              className="hidden md:flex items-center gap-1 bg-white/40 backdrop-blur-md rounded-full px-2 py-1.5 shadow-lg shadow-blue-200/40"
             >
-              <NavButton onClick={() => scrollToSection('skills')}>Skills</NavButton>
-              <NavButton onClick={() => scrollToSection('experience')}>Experience</NavButton>
-              <NavButton onClick={() => scrollToSection('projects')}>Projects</NavButton>
-              <NavLink href="https://drive.google.com/file/d/167lURCr_XJPq1k_84rTj9GRcNajFYeOz/view?usp=drive_link">Resume</NavLink>
+              {navItems.map((item) => (
+                <NavButton key={item.id} onClick={() => scrollToSection(item.id)}>{item.label}</NavButton>
+              ))}
+              <NavLink href={RESUME_URL}>Resume</NavLink>
+            </motion.div>
+
+            {/* Mobile: hamburger */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="md:hidden flex flex-col items-end gap-2"
+            >
+              <button
+                onClick={() => setMenuOpen((o) => !o)}
+                aria-label="Toggle menu"
+                className="flex items-center justify-center w-10 h-10 bg-white/40 backdrop-blur-md rounded-full shadow-lg shadow-blue-200/40 text-[#1e3a5f]"
+              >
+                {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+
+              <AnimatePresence>
+                {menuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className="flex flex-col items-stretch gap-1 bg-white/60 backdrop-blur-md rounded-2xl p-2 shadow-lg shadow-blue-200/40 min-w-[140px]"
+                  >
+                    {navItems.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => scrollToSection(item.id)}
+                        className="px-4 py-2 rounded-xl text-[#1e3a5f] font-bold text-sm text-right hover:bg-white/70 transition-colors duration-150 [font-family:var(--font-fredoka)]"
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                    <a
+                      href={RESUME_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setMenuOpen(false)}
+                      className="px-4 py-2 rounded-xl text-[#1e3a5f] font-bold text-sm text-right hover:bg-white/70 transition-colors duration-150 [font-family:var(--font-fredoka)]"
+                    >
+                      Resume
+                    </a>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           </div>
         </>

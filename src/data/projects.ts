@@ -87,20 +87,6 @@ export const projects: Project[] = [
     featured: true
   },
   {
-    id: 'weather-app',
-    title: 'Weather App',
-    description: 'A beautiful and interactive weather application built with Python and Streamlit that provides current weather conditions and forecasts for any city around the world.',
-    thumbnail: '/weather-app.png',
-    tech: ['Python', 'Streamlit', 'OpenWeather API', 'Plotly', 'Folium'],
-    status: 'completed',
-    type: 'personal',
-    links: {
-      repo: 'https://github.com/ianrmenezes/Weather-App',
-      live: 'https://weather-app-erachaxm6d22gb6axgh4wd.streamlit.app'
-    },
-    featured: true
-  },
-  {
     id: 'tracknext',
     title: 'TrackNext',
     description: 'TrackNext helps you build better habits and achieve your goals by tracking your daily progress in a simple, organized way.',
@@ -110,20 +96,6 @@ export const projects: Project[] = [
     type: 'personal',
     links: {
       repo: 'https://github.com/ianrmenezes/TrackNext'
-    },
-    featured: true
-  },
-  {
-    id: 'grade-calculator',
-    title: 'Grade Calculator',
-    description: 'A modern, clean, and responsive web application for calculating weighted grades with real-time updates and visual feedback.',
-    thumbnail: '/gradecalc.png',
-    tech: ['HTML', 'JavaScript', 'CSS', 'Tailwind CSS', 'Chart.js'],
-    status: 'completed',
-    type: 'personal',
-    links: {
-      repo: 'https://github.com/ianrmenezes/grade-calculator',
-      live: 'https://ianrmenezes.github.io/grade-calculator/'
     },
     featured: true
   },
@@ -139,19 +111,5 @@ export const projects: Project[] = [
       repo: 'https://github.com/ianrmenezes/travel-food-blog'
     },
     featured: true
-  },
-  {
-    id: 'todoflow',
-    title: 'TodoFlow',
-    description: 'A modern todo list application with glassmorphism design and dark/light mode toggle.',
-    thumbnail: '/todoflow.png',
-    tech: ['HTML', 'JavaScript', 'CSS', 'Tailwind CSS'],
-    status: 'completed',
-    type: 'personal',
-    links: {
-      repo: 'https://github.com/ianrmenezes/TodoFlow',
-      live: 'https://ianrmenezes.github.io/TodoFlow'
-    },
-    featured: true
   }
-]; 
+];

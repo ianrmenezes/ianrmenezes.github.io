@@ -10,9 +10,9 @@ export default function Footer() {
   const { ref, isInView } = useInView({ triggerOnce: true });
 
   const socialLinks = [
-    { name: "GitHub",   url: "https://github.com/ianrmenezes",          icon: Github,   style: "hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-600" },
-    { name: "LinkedIn", url: "https://www.linkedin.com/in/ian-menezes", icon: Linkedin, style: "hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600" },
-    { name: "Email",    url: "mailto:imenezes@uoguelph.ca",             icon: Mail,     style: "hover:bg-amber-50 hover:border-amber-200 hover:text-amber-600" },
+    { name: "GitHub",   url: "https://github.com/ianrmenezes",          icon: Github,   style: "hover:bg-white" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/ian-menezes", icon: Linkedin, style: "hover:bg-white" },
+    { name: "Email",    url: "mailto:imenezes@uoguelph.ca",             icon: Mail,     style: "hover:bg-white" },
   ];
 
   const handleScrollToTop = () => {

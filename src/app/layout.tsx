@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Nunito, Zen_Kurenaido, Fredoka } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
@@ -37,6 +37,11 @@ export const metadata: Metadata = {
     title: 'Ian Menezes - Portfolio',
     description: 'Personal portfolio of Ian Menezes, a software developer passionate about creating innovative digital solutions.',
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
