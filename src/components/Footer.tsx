@@ -32,6 +32,7 @@ export default function Footer() {
             onClick={handleScrollToTop}
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
+            transition={{ type: 'tween', duration: 0.12 }}
             className="flex items-center gap-2 px-5 py-2.5 bg-white/80 border-2 border-blue-200 rounded-full text-[#1e3a5f] font-bold shadow-sm hover:shadow-md hover:bg-white transition-all duration-200 cursor-pointer"
           >
             <ArrowUp className="w-4 h-4" />
@@ -58,6 +59,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.06, y: -3 }}
                 whileTap={{ scale: 0.95 }}
+                transition={{ type: 'tween', duration: 0.12 }}
                 className={`flex items-center gap-2 px-5 py-2.5 bg-white/80 border-2 border-blue-100 rounded-full text-[#1e3a5f] font-bold shadow-sm transition-all duration-200 cursor-pointer ${link.style}`}
               >
                 <link.icon className="w-4 h-4" />
