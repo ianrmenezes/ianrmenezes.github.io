@@ -6,6 +6,7 @@ import { ExternalLink, Github } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
 import { projects } from '@/data/projects';
 import { getProjectStats } from '@/lib/utils';
+import { BubbleWrapper } from '@/components/BubbleWrapper';
 
 type FilterType = 'all' | 'personal' | 'group' | 'academic' | 'completed' | 'ongoing';
 
@@ -87,19 +88,18 @@ export default function Projects() {
             className="flex flex-wrap justify-center gap-2 mb-10"
           >
             {filters.map((f) => (
-              <motion.button
-                key={f.value}
-                onClick={() => setActiveFilter(f.value)}
-                whileHover={{ scale: 1.05, y: -1 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-5 py-2 rounded-full text-sm font-bold transition-all duration-200 cursor-pointer ${
-                  activeFilter === f.value
-                    ? 'bg-[#5b8fa8] text-white shadow-md'
-                    : 'bg-white/70 border-2 border-blue-100 text-[#1e3a5f] hover:bg-white'
-                }`}
-              >
-                {f.label}
-              </motion.button>
+              <BubbleWrapper key={f.value}>
+                <button
+                  onClick={() => setActiveFilter(f.value)}
+                  className={`px-5 py-2 rounded-full text-sm font-bold transition-colors duration-150 cursor-pointer ${
+                    activeFilter === f.value
+                      ? 'bg-[#5b8fa8] text-white shadow-md'
+                      : 'bg-white/70 border-2 border-blue-100 text-[#1e3a5f] hover:bg-white'
+                  }`}
+                >
+                  {f.label}
+                </button>
+              </BubbleWrapper>
             ))}
           </motion.div>
 
@@ -177,26 +177,30 @@ export default function Projects() {
                     {/* Links */}
                     <div className="flex gap-2">
                       {project.links.repo && (
-                        <a
-                          href={project.links.repo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 px-4 py-2 bg-white/30 border border-white/50 rounded-full text-xs font-bold text-[#0a2540] hover:bg-white/50 transition-all duration-150 hover:scale-105"
-                        >
-                          <Github className="w-3.5 h-3.5" />
-                          Code
-                        </a>
+                        <BubbleWrapper>
+                          <a
+                            href={project.links.repo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 px-4 py-2 bg-white/30 border border-white/50 rounded-full text-xs font-bold text-[#0a2540] hover:bg-white/50 transition-colors duration-150"
+                          >
+                            <Github className="w-3.5 h-3.5" />
+                            Code
+                          </a>
+                        </BubbleWrapper>
                       )}
                       {(project.links.live || project.links.demo) && (
-                        <a
-                          href={project.links.live ?? project.links.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 px-4 py-2 bg-[#0a2540]/70 border border-white/30 rounded-full text-xs font-bold text-white hover:bg-[#0a2540]/90 transition-all duration-150 hover:scale-105"
-                        >
-                          <ExternalLink className="w-3.5 h-3.5" />
-                          {project.links.live ? 'Live' : 'Demo'}
-                        </a>
+                        <BubbleWrapper>
+                          <a
+                            href={project.links.live ?? project.links.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 px-4 py-2 bg-[#0a2540]/70 border border-white/30 rounded-full text-xs font-bold text-white hover:bg-[#0a2540]/90 transition-colors duration-150"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            {project.links.live ? 'Live' : 'Demo'}
+                          </a>
+                        </BubbleWrapper>
                       )}
                     </div>
                   </div>

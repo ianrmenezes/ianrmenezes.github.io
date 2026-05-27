@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Download } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
+import { BubbleWrapper } from '@/components/BubbleWrapper';
 
 
 
@@ -51,15 +52,17 @@ export default function Hero() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
         >
-          <a
-            href="https://drive.google.com/file/d/167lURCr_XJPq1k_84rTj9GRcNajFYeOz/view?usp=drive_link"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#5b8fa8] rounded-full text-white font-bold hover:bg-[#4a7fa5] transition-all duration-200 hover:scale-105 shadow-md hover:shadow-lg"
-          >
-            <Download className="w-5 h-5" />
-            View My Resume
-          </a>
+          <BubbleWrapper>
+            <a
+              href="https://drive.google.com/file/d/167lURCr_XJPq1k_84rTj9GRcNajFYeOz/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#5b8fa8] rounded-full text-white font-bold hover:bg-[#4a7fa5] transition-colors duration-150 shadow-md"
+            >
+              <Download className="w-5 h-5" />
+              View My Resume
+            </a>
+          </BubbleWrapper>
         </motion.div>
       </div>
 

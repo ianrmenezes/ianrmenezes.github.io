@@ -4,14 +4,15 @@ import React from 'react';
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { BubbleWrapper } from "@/components/BubbleWrapper";
 
 export default function Footer() {
   const { ref, isInView } = useInView({ triggerOnce: true });
 
   const socialLinks = [
-    { name: "GitHub",   url: "https://github.com/ianrmenezes",              icon: Github,   style: "hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-600" },
-    { name: "LinkedIn", url: "https://www.linkedin.com/in/ian-menezes",     icon: Linkedin, style: "hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600" },
-    { name: "Email",    url: "mailto:imenezes@uoguelph.ca",               icon: Mail,     style: "hover:bg-amber-50 hover:border-amber-200 hover:text-amber-600" },
+    { name: "GitHub",   url: "https://github.com/ianrmenezes",          icon: Github,   style: "hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-600" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/ian-menezes", icon: Linkedin, style: "hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600" },
+    { name: "Email",    url: "mailto:imenezes@uoguelph.ca",             icon: Mail,     style: "hover:bg-amber-50 hover:border-amber-200 hover:text-amber-600" },
   ];
 
   const handleScrollToTop = () => {
@@ -28,16 +29,15 @@ export default function Footer() {
           className="flex flex-col items-center gap-8"
         >
           {/* Back to top */}
-          <motion.button
-            onClick={handleScrollToTop}
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: 'tween', duration: 0.12 }}
-            className="flex items-center gap-2 px-5 py-2.5 bg-white/80 border-2 border-blue-200 rounded-full text-[#1e3a5f] font-bold shadow-sm hover:shadow-md hover:bg-white transition-all duration-200 cursor-pointer"
-          >
-            <ArrowUp className="w-4 h-4" />
-            Back to Top
-          </motion.button>
+          <BubbleWrapper>
+            <button
+              onClick={handleScrollToTop}
+              className="flex items-center gap-2 px-5 py-2.5 bg-white/80 border-2 border-blue-200 rounded-full text-[#1e3a5f] font-bold shadow-sm hover:bg-white transition-colors duration-150 cursor-pointer"
+            >
+              <ArrowUp className="w-4 h-4" />
+              Back to Top
+            </button>
+          </BubbleWrapper>
 
           {/* Name */}
           <div className="text-center">
@@ -52,19 +52,17 @@ export default function Footer() {
             className="flex flex-wrap justify-center gap-3"
           >
             {socialLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.06, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: 'tween', duration: 0.12 }}
-                className={`flex items-center gap-2 px-5 py-2.5 bg-white/80 border-2 border-blue-100 rounded-full text-[#1e3a5f] font-bold shadow-sm transition-all duration-200 cursor-pointer ${link.style}`}
-              >
-                <link.icon className="w-4 h-4" />
-                {link.name}
-              </motion.a>
+              <BubbleWrapper key={link.name}>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center gap-2 px-5 py-2.5 bg-white/80 border-2 border-blue-100 rounded-full text-[#1e3a5f] font-bold shadow-sm transition-colors duration-150 cursor-pointer ${link.style}`}
+                >
+                  <link.icon className="w-4 h-4" />
+                  {link.name}
+                </a>
+              </BubbleWrapper>
             ))}
           </motion.div>
 
