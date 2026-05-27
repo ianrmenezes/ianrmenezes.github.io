@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Next.js 14+ has app directory enabled by default
+  output: 'export',
+  images: { unoptimized: true },
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig

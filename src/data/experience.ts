@@ -24,58 +24,49 @@ export interface Experience {
 // Add new work experiences at the top of this array
 
 export const experience: Experience[] = [
-  // ── CURRENT POSITION ──
   {
-    id: 'blinkcomkw',                                           // Unique identifier
-    title: 'Software Developer',                               // Your job title
-    company: 'Blinkcomkw',                                     // Company name (also known as Blink Gaming Gadgets)
-    location: 'Kuwait City, Al Asimah, Kuwait',                // Work location
-    period: {
-      start: '2025-06',                                         // Start date (June 2025)
-      end: undefined                                            // Current job (no end date)
-    },
-    description: [                                              // Your key responsibilities and achievements
-      'Developed an Employee Self-Service (ESS) portal, implementing features and assisting with end-to-end testing of web applications.',
-      'Collaborated with team members to design, debug, and enhance software solutions, improving reliability and user experience.',
-      'Learned and adapted to team workflows and development processes, gaining insight into project planning, task prioritization, and collaborative software development practices.'
+    id: 'blink',
+    title: 'Software Developer',
+    company: 'Blink Gaming Gadgets',
+    location: 'Kuwait City, Al Asimah, Kuwait',
+    period: { start: '2025-06', end: '2025-08' },
+    description: [
+      'Developed a React/Node.js internal web application to automate gaming inventory and product data management.',
+      'Refined REST APIs and resolved PostgreSQL integration bugs, improving data synchronization and reliability.',
+      'Built responsive UI components using Tailwind/TypeScript to ensure cross-device compatibility.',
+      'Optimized component rendering based on code reviews and team feedback to reduce page load times.',
     ],
-    tech: ['Web Development', 'Testing', 'Collaborative Development'],  // Skills/technologies used
-    type: 'co-op'                                              // Employment type
+    tech: ['React', 'JavaScript', 'TypeScript', 'Node.js', 'REST APIs', 'PostgreSQL', 'Python'],
+    type: 'co-op',
   },
-  // ── IKEA INTERNSHIP ──
   {
-    id: 'ikea',                                                 // Unique identifier
-    title: 'Technical Support and IT Operations Intern',       // Internship title
-    company: 'Inter IKEA Group',                               // IKEA's parent company
-    location: 'Kuwait City, Al Asimah, Kuwait',                // Internship location
-    period: {
-      start: '2024-08',                                         // August 2024
-      end: '2024-09'                                            // September 2024 (1-month internship)
-    },
-    description: [                                              // What you accomplished during the internship
-      'Troubleshot and maintained websites to ensure smooth operation and user accessibility',
-      'Configured hardware and software for new devices, enabling efficient setup for new employees',
-      'Managed databases to optimize data storage and improve retrieval efficiency.'
+    id: 'ikea',
+    title: 'Technical Support and IT Operations Intern',
+    company: 'IKEA',
+    location: 'Kuwait City, Al Asimah, Kuwait',
+    period: { start: '2024-05', end: '2024-08' },
+    description: [
+      'Provided frontline IT support, resolving hardware and network issues to minimize operational downtime.',
+      'Configured and deployed workstations and software to support employees across multiple retail departments.',
+      'Managed internal web portal updates using HTML/CSS to improve resource accessibility for staff.',
+      'Maintained company databases via SQL to ensure high data integrity and efficient record retrieval.',
     ],
-    tech: ['Technical Support', 'Hardware Configuration', 'Database Management', 'Web Design'],  // Skills gained
-    type: 'internship'                                          // Employment type
+    tech: ['Technical Support', 'Networking', 'Hardware Configuration', 'HTML/CSS', 'SQL'],
+    type: 'internship',
   },
-  // ── MARRIOTT INTERNSHIP ──
   {
-    id: 'marriott',                                             // Unique identifier
-    title: 'Cross-Departmental Intern',                        // Internship title
-    company: 'Marriott International',                         // Global hotel chain
-    location: 'Kuwait City, Al Asimah, Kuwait',                // Internship location
-    period: {
-      start: '2023-05',                                         // May 2023
-      end: '2023-07'                                            // July 2023 (3-month internship)
-    },
-    description: [                                              // Your internship experience
-      'Completed cross-exposure training at St. Regis, Sheraton – A Luxury Collection Hotel, and Four Points by Sheraton',
-      'Gained hands-on experience in various hotel operations and customer service within prestigious hospitality environments',
-      'Learned to manage time effectively and coordinate tasks in a fast-paced luxury hotel setting'
+    id: 'marriott',
+    title: 'Data Analyst Intern',
+    company: 'Marriott International',
+    location: 'Kuwait City, Al Asimah, Kuwait',
+    period: { start: '2023-05', end: '2023-08' },
+    description: [
+      'Collected, cleaned, and organized operational data across departments to ensure accuracy and consistency.',
+      'Built Excel dashboards using pivot tables, VLOOKUP, and conditional formatting to track key metrics.',
+      'Analyzed guest and inventory data to identify trends and delivered findings to department leads.',
+      'Generated regular reports summarizing performance data to improve visibility across departments.',
     ],
-    tech: ['Customer Service', 'Hotel Operations', 'Cross-functional Training', 'Time Management'],  // Soft skills developed
-    type: 'internship'                                          // Employment type
-  }
+    tech: ['Data Analysis', 'Excel', 'Pivot Tables', 'Reporting', 'SQL'],
+    type: 'internship',
+  },
 ]; 

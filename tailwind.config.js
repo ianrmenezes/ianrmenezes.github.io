@@ -12,7 +12,7 @@ module.exports = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Nunito', 'sans-serif'],
       },
       animation: {
         'marquee': 'marquee 25s linear infinite',
@@ -31,4 +31,4 @@ module.exports = {
     },
   },
   plugins: [],
-} 
+}

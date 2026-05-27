@@ -28,6 +28,39 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'footybuzz',
+    title: 'FootyBuzz',
+    description: 'A real-time 12-league soccer dashboard unifying live scores and standings in a single view, with multi-layer caching for sub-200ms loads, team profile pages, a persistent favorites tracker, and a fully responsive mobile UI.',
+    thumbnail: '/footybuzz.jpg',
+    tech: ['React', 'Tailwind CSS', 'Vite', 'Vercel'],
+    status: 'completed',
+    type: 'personal',
+    links: { repo: 'https://github.com/ianrmenezes/FootyBuzz', live: 'https://footybuzz.vercel.app' },
+    featured: true,
+  },
+  {
+    id: 'flappy-bird',
+    title: 'Flappy Bird Game',
+    description: 'A Flappy Bird clone built to master real-time game loop architecture and collision physics, featuring collision detection, score tracking, game-over logic, and smooth responsive controls.',
+    thumbnail: '/flappy-bird.jpeg',
+    tech: ['Python', 'JavaScript', 'HTML', 'CSS'],
+    status: 'completed',
+    type: 'personal',
+    links: { repo: 'https://github.com/ianrmenezes/flappy-bird', live: 'https://ianrmenezes.github.io/flappy-bird/' },
+    featured: true,
+  },
+  {
+    id: 'arkhive',
+    title: 'Arkhive',
+    description: 'A search platform for 1945 U.S. newspaper archives built to accelerate historical propaganda analysis, powered by a TF-IDF and Logistic Regression ML pipeline to classify article text with a searchable web interface.',
+    thumbnail: '/arkhive.jpeg',
+    tech: ['JavaScript', 'HTML', 'CSS', 'Python', 'SQL', 'TF-IDF', 'Logistic Regression'],
+    status: 'completed',
+    type: 'academic',
+    links: { repo: 'https://github.com/ianrmenezes/Arkhive_' },
+    featured: true,
+  },
+  {
     id: 'alertmate',
     title: 'AlertMate',
     description: 'Neighborhood Safety Network (AlertMate) is a community-driven safety app designed to report suspicious activities, access emergency resources, and stay informed about potential threats.',
@@ -49,8 +82,7 @@ export const projects: Project[] = [
     status: 'ongoing',
     type: 'group',
     links: {
-      repo: 'https://github.com/ianrmenezes/Wordz',
-      live: 'https://www.wordzzz.xyz/'
+      repo: 'https://github.com/ianrmenezes/Wordz'
     },
     featured: true
   },
@@ -111,7 +143,7 @@ export const projects: Project[] = [
   {
     id: 'todoflow',
     title: 'TodoFlow',
-    description: 'A beautiful, modern todo list application with glassmorphism design and dark/light mode toggle.',
+    description: 'A modern todo list application with glassmorphism design and dark/light mode toggle.',
     thumbnail: '/todoflow.png',
     tech: ['HTML', 'JavaScript', 'CSS', 'Tailwind CSS'],
     status: 'completed',

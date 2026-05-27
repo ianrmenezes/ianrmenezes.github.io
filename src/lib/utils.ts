@@ -7,16 +7,17 @@ export function cn(...inputs: ClassValue[]) {
 
 export function formatDate(dateString: string): string {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'short' 
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    timeZone: 'UTC',
   });
 }
 
 export function formatPeriod(start: string, end?: string): string {
   const startDate = formatDate(start);
   const endDate = end ? formatDate(end) : 'Present';
-  return `${startDate} - ${endDate}`;
+  return `${startDate} – ${endDate}`;
 }
 
 export function getProjectStats(projects: any[]) {
